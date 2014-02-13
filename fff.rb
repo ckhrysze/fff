@@ -13,20 +13,12 @@ class DiffFile
     @lines.push(DiffLine.new('', '', '', 'rangeinfo', info))
 
     parts = info.split
-    parts.shift # ignore @@ prefix
-    parts.pop # ignore @@ suffix
-
-    range_a = parts.first.slice(1..-1).split(',')
-    @file_a_start = range_a.first
-    @file_a_lines = range_a.last
-
-    range_b = parts.last.slice(1..-1).split(',')
-    @file_b_start = range_b.first
-    @file_b_lines = range_b.last
+    range_a = parts[1].slice(1..-1).split(',')
+    range_b = parts[2].slice(1..-1).split(',')
 
     # -1 because I'm lazy and its easier to always add 1 later
-    @file_a_current = @file_a_start.to_i-1
-    @file_b_current = @file_b_start.to_i-1
+    @file_a_current = range_a.first.to_i-1
+    @file_b_current = range_b.first.to_i-1
   end
 
   def add_line(line)
