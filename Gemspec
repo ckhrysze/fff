@@ -1,0 +1,23 @@
+Gem::Specification.new do |s|
+  s.name = 'fff'
+  s.version = '0.1.0'
+  s.licenses = ['MIT']
+  s.summary = "Generate github-esque diff output"
+  s.description = "Format a unified diff as html, or pdf, or something."
+  s.authors = ["Chris Hildebrand"]
+  s.email = 'makegems@ckhrysze.net'
+  s.homepage = 'https://github.com/ckhrysze/fff'
+
+  s.files = %w(README.md fff.rb)
+  %w(assets lib).each do |folder|
+    Dir.glob(File.join(folder, "*")) do |filename|
+      puts filename
+      s.files << filename
+    end
+  end
+
+  puts "Files: "
+  puts s.files
+
+  s.add_runtime_dependency 'pdfkit', '~> 0.5', '>= 0.5.4'
+end
