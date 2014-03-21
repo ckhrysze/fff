@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diff</title>
+
+    <style>
+      <%= stylesheet %>
+    </style>
+  </head>
+
+  <body>
+
+    <div class="page">
+      <p class="doc-header">
+        SHFL RGS UPDATE
+      </p>
+      <p class="author">
+        Prepared by: <%= changelog.author %>
+      </p>
+      <p class="version">
+        Version: <%= changelog.version %>
+      </p>
+    </div>
+
+    <div class="page">
+      <p class="page-header">
+        Overview
+      </p>
+      <% changelog.overview.each do |content| %>
+      <p class="overview"><%= content %></p>
+      <% end %>
+    </div>
+
+    <div class="page">
+      <p class="page-header">
+        Change Log
+      </p>
+      <% changelog.changes.each do |title, list| %>
+      <p class="subtitle">
+        <%= title%>
+      </p>
+      <ul>
+        <% list.each do |desc| %>
+        <li><%= desc %></li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+
+    <div>
+      <p class="page-header">
+        File Changes
+      </p>
+
+      <p>
+        <% changelog.files.each do |file| %>
+        <table>
+          <tr class="filename">
+            <td><span class="numchanges"><%= file.changes %></span></td>
+            <td colspan="2"></td>
+            <td><%= file.filename %></td>
+          </tr>
+          <% file.lines.each do |line| %>
+          <tr class="<%=line.status%>">
+            <td class="line-number"><%= line.left_line_number %></td>
+            <td class="line-number"><%= line.right_line_number %></td>
+            <td><%= line.status_symbol %></td>
+            <td class="content"><%= line.content %></td>
+          </tr>
+          <% end %>
+        </table>
+        <% end %>
+      </p>
+    </div>
+  </body>
+</html>

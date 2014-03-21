@@ -1,0 +1,82 @@
+html, body {
+  margin:0;padding:0;border:0;
+  overflow: visible !important;
+}
+table, tr, th, td {
+  margin:0;padding:0;border:0;border-spacing:0;
+}
+
+.page {
+  page-break-after: always !important;
+}
+.doc-header {
+  font-size: 32px;
+}
+.page-header {
+  font-size: 24px;
+  color: rgb(150, 200, 255);
+}
+.subtitle {
+  font-size: 18px;
+  color: rgb(150, 200, 255);
+}
+
+td {
+  padding: 5px;
+  color: rgb(51, 51, 51);
+  font-family: Consolas, 'Liberation Mono', Courier, monospace;
+  font-size: 12px;
+}
+
+table {
+  border-bottom: 1px solid rgb(229, 229, 229);
+}
+tbody {
+  border-bottom: 1px solid rgb(229, 229, 229);
+}
+.filename {
+  background-color: rgb(234, 234, 234);
+  background-image: linear-gradient(rgb(250, 250, 250), rgb(234, 234, 234));
+  background-repeat: repeat-x;
+  font-family: Monaco, 'Liberation Mono', Courier, monospace;
+  font-size: 12px;
+  border-bottom-color: rgb(216, 216, 216);
+  color: rgb(85, 85, 85);
+  height: 44px;
+  line-height: 44px;
+  padding-left: 5px;
+}
+.range-info {
+}
+.line-number {
+  color: rgba(0, 0, 0, 0.3);
+  border-left: 1px solid rgb(229, 229, 229);
+  border-right: 1px solid rgb(229, 229, 229);
+  min-width: 40px;
+  width: 40px;
+}
+.content {
+  border-right: 1px solid rgb(229, 229, 229);
+  white-space: pre ; unicode-bidi: embed;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+ }
+.rangeinfo {
+  background-color: rgb(248, 248, 255);
+  color: rgb(153, 153, 153);
+}
+.nochange {}
+.removed {
+  background-color: rgb(255, 221, 221);
+}
+.added {
+  background-color: rgb(221, 255, 221);
+}
+.overview {
+  padding: 5px;
+  width: 40em;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
