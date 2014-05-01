@@ -2,6 +2,7 @@ class Changelog
   attr_accessor :author, :version, :overview, :changes, :files
 
   def initialize
+    @basedir = File.expand_path("..", __dir__)
     @changes = {}
     @diffed_files = {}
   end
@@ -16,6 +17,8 @@ class Changelog
     file = nil
     File.open(filename).each do |line|
       case line
+      when /^\s*$/
+        # do nothing
       when /^diff\s/
         parts = line.split()
         newfile = DiffFile.new(parts.last)
@@ -45,8 +48,8 @@ class Changelog
   end
 
   def export_html(filename)
-    stylesheet = File.read('assets/format.css')
-    tmpl = ERB.new(File.read('assets/tmpl.html'))
+    stylesheet = File.read(File.join(@basedir, 'assets/format.css'))
+    tmpl = ERB.new(File.read(File.join(@basedir, 'assets/tmpl.html')))
 
     #for bindings to work
     changelog = self
@@ -58,8 +61,8 @@ class Changelog
   end
 
   def export_pdf(filename)
-    stylesheet = File.read('assets/format.css')
-    tmpl = ERB.new(File.read('assets/tmpl.html'))
+    stylesheet = File.read(File.join(@basedir, 'assets/format.css'))
+    tmpl = ERB.new(File.read(File.join(@basedir, 'assets/tmpl.html')))
 
     #for bindings to work
     changelog = self

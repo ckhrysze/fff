@@ -8,16 +8,12 @@ Gem::Specification.new do |s|
   s.email = 'makegems@ckhrysze.net'
   s.homepage = 'https://github.com/ckhrysze/fff'
 
-  s.files = %w(README.md fff.rb)
+  s.files = %w(README.md)
   %w(assets lib).each do |folder|
     Dir.glob(File.join(folder, "*")) do |filename|
-      puts filename
       s.files << filename
     end
   end
-
-  puts "Files: "
-  puts s.files
 
   s.add_runtime_dependency 'pdfkit', '~> 0.5', '>= 0.5.4'
 end
